@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:foreground="?attr/selectableItemBackground"
+	android:ellipsize="end"
+	android:clickable="true"
+	android:focusable="false"
+	android:focusableInTouchMode="true"
+	android:fontFamily="@font/gotham_book"
+	android:maxLines="2"
+	android:padding="16dp"
+	android:textColor="@color/black"
+	android:textSize="14sp"
+	tools:text="@tools:sample/lorem" />

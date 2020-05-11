@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:background="#A0000000"
+	tools:context=".view.dialog.StopTimerDialog">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/almost_white"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:text="Encerrar cronômetro"
+			style="@style/Subtitle"
+			android:paddingTop="24dp"
+			android:layout_height="wrap_content" />
+
+		<EditText
+			android:id="@+id/etDescription"
+			style="@style/FormField"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:nextFocusForward="@id/etTimeStart"
+			android:layout_marginStart="24dp"
+			android:layout_marginTop="48dp"
+			android:layout_marginEnd="24dp"
+			android:hint="O que foi realizado neste intervalo? (Opcional)"
+			android:inputType="textAutoComplete"
+			android:nextFocusDown="@id/btnSend" />
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="24dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginEnd="24dp"
+			android:layout_marginBottom="24dp"
+			android:orientation="horizontal">
+
+			<Button
+				android:id="@+id/etTimeStart"
+				style="@style/FormField"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_weight="1"
+				android:nextFocusForward="@id/etTimeEnd"
+				android:drawableEnd="@drawable/ic_hourglass_start"
+				android:drawablePadding="16dp"
+				android:focusableInTouchMode="false"
+				android:hint="Início do expediente"
+				android:maxLines="2"
+				android:paddingEnd="16dp"
+				android:textAlignment="textStart" />
+
+			<Button
+				android:id="@+id/etTimeEnd"
+				style="@style/FormField"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:nextFocusForward="@id/btnSend"
+				android:layout_weight="1"
+				android:drawableEnd="@drawable/ic_hourglass_end"
+				android:drawablePadding="16dp"
+				android:focusableInTouchMode="false"
+				android:hint="Fim do expediente"
+				android:maxLines="2"
+				android:paddingEnd="16dp"
+				android:textAlignment="textStart" />
+		</LinearLayout>
+
+
+		<Button
+			android:id="@+id/btnSend"
+			style="@style/Button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="onBtnSendClick"
+			android:text="Enviar" />
+
+	</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

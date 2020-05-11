@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".view.activity.home.HomeActivity">
+
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<ImageView
+			android:id="@+id/imageView"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/background"
+			android:transitionName="background"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<android.support.constraint.ConstraintLayout
+			android:id="@+id/header"
+			android:layout_width="match_parent"
+			android:layout_height="80dp"
+			android:background="@color/dark_gray"
+			android:transitionName="header"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="64dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:src="@drawable/logo_header"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<View
+				android:layout_width="0dp"
+				android:layout_height="3dp"
+				android:background="@color/yellow"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
+
+		</android.support.constraint.ConstraintLayout>
+
+		<ScrollView
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:fillViewport="true"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/header">
+
+			<android.support.constraint.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:clipChildren="false"
+				android:clipToPadding="false"
+				android:paddingBottom="50dp"
+				android:orientation="vertical">
+
+				<!-- FrameLayout is needed here to do the flip animation -->
+				<FrameLayout
+					android:id="@+id/flClockContainer"
+					android:layout_width="320dp"
+					android:layout_height="320dp"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="24dp"
+					android:rotationY="90"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<android.support.constraint.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:background="@drawable/shape_yellow_circle"
+						android:elevation="1dp">
+
+						<TextView
+							android:id="@+id/textView2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="16dp"
+							android:fontFamily="@font/gotham_black"
+							android:paddingTop="5dp"
+							android:text="Cronômetro"
+							android:textAllCaps="true"
+							android:textColor="@color/black"
+							android:textSize="16sp"
+							app:layout_constraintBottom_toTopOf="@+id/lnButtonContainer"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent" />
+
+						<LinearLayout
+							android:id="@+id/lnButtonContainer"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:animateLayoutChanges="true"
+							android:gravity="center_horizontal"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent">
+
+							<ImageButton
+								android:id="@+id/btnPlayPause"
+								android:layout_width="64dp"
+								android:layout_height="64dp"
+								android:layout_marginStart="16dp"
+								android:layout_marginEnd="16dp"
+								android:background="@drawable/shape_dark_transparent_circle"
+								android:onClick="onBtnPlayPauseClick"
+								android:src="@drawable/ic_play" />
+
+							<ImageButton
+								android:id="@+id/btnStop"
+								android:layout_width="64dp"
+								android:layout_height="64dp"
+								android:layout_marginEnd="16dp"
+								android:background="@drawable/shape_dark_transparent_circle"
+								android:onClick="onBtnStopClick"
+								android:src="@drawable/ic_stop"
+								android:visibility="gone"
+								tools:visibility="visible" />
+						</LinearLayout>
+
+
+						<TextView
+							android:id="@+id/tvPassedTime"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="16dp"
+							android:layout_marginBottom="8dp"
+							android:fontFamily="@font/myriad_pro"
+							android:text="Aperte para iniciar"
+							android:textColor="@color/black"
+							android:textSize="14sp"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/lnButtonContainer" />
+
+						<TextView
+							android:id="@+id/tvCurrentTaskLabel"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="20dp"
+							android:fontFamily="@font/gotham_black"
+							android:text="Tarefa atual"
+							android:textAllCaps="true"
+							android:textColor="@color/black"
+							android:textSize="10sp"
+							android:visibility="invisible"
+							app:layout_constraintEnd_toEndOf="@+id/tvCurrentTask"
+							app:layout_constraintStart_toStartOf="@+id/tvCurrentTask"
+							app:layout_constraintTop_toBottomOf="@+id/tvPassedTime"
+							tools:visibility="visible" />
+
+						<TextView
+							android:id="@+id/tvCurrentTask"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="60dp"
+							android:layout_marginEnd="60dp"
+							android:clickable="true"
+							android:ellipsize="end"
+							android:focusable="false"
+							android:focusableInTouchMode="false"
+							android:fontFamily="@font/gotham_book"
+							android:maxLines="2"
+							android:onClick="onBtnChangeTaskClick"
+							android:padding="7dp"
+							android:textAlignment="center"
+							android:textColor="@color/black"
+							android:textSize="9sp"
+							app:layout_constraintEnd_toEndOf="@+id/lnButtonContainer"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/tvCurrentTaskLabel"
+							tools:text="@tools:sample/lorem/random" />
+
+
+					</android.support.constraint.ConstraintLayout>
+				</FrameLayout>
+
+				<TextView
+					android:id="@+id/tvAdjustAlarms"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:alpha="0"
+					android:clickable="true"
+					android:drawableStart="@drawable/ic_alarm"
+					android:drawablePadding="16dp"
+					android:focusable="false"
+					android:focusableInTouchMode="false"
+					android:fontFamily="@font/gotham_book"
+					android:foreground="?attr/selectableItemBackground"
+					android:gravity="center_vertical"
+					android:onClick="onBtnAdjustAlarmsClick"
+					android:padding="16dp"
+					android:paddingStart="24dp"
+					android:text="Ajustar alarmes"
+					android:textColor="@color/black"
+					android:textSize="18sp"
+					android:visibility="gone"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					tools:alpha="1"
+					tools:visibility="visible" />
+			</android.support.constraint.ConstraintLayout>
+		</ScrollView>
+	</android.support.constraint.ConstraintLayout>
+
+	<LinearLayout
+		android:id="@+id/lnProgress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:behavior_hideable="false"
+		app:behavior_peekHeight="50dp"
+		app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:clickable="true"
+		android:orientation="vertical"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<LinearLayout
+			android:id="@+id/lnProgressHeader"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:background="@color/dark_gray"
+			android:clickable="true"
+			android:focusable="false"
+			android:focusableInTouchMode="false"
+			android:onClick="onLnProgressClick"
+			android:orientation="vertical">
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginBottom="10dp"
+				android:background="@color/yellow" />
+
+			<TextView
+				android:id="@+id/tvHoursReport"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:fontFamily="@font/gotham_book"
+				android:paddingTop="10dp"
+				android:paddingBottom="12dp"
+				android:textColor="@color/gray"
+				android:textSize="10sp"
+				tools:text="100 de 160 horas registradas" />
+
+			<ProgressBar
+				android:id="@+id/pbHoursPercent"
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_width="match_parent"
+				android:layout_height="5dp"
+				android:indeterminate="false"
+				android:progressDrawable="@drawable/selector_progressbar"
+				tools:max="100"
+				tools:min="0"
+				tools:progress="50" />
+
+		</LinearLayout>
+
+		<leandro.soares.quevedo.scheduller.view.activity.weekly.WeeklyTimeActivity
+			android:layout_width="match_parent"
+			android:layout_weight="1"
+			android:layout_height="0dp"/>
+	</LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

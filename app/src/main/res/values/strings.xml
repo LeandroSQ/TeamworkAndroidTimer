@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">Scheduller</string>
+	<string name="start_clock">Iniciar cronômetro</string>
+</resources>
